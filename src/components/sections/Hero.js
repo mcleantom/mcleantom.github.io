@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import { Flex, Stack, Heading } from "@chakra-ui/layout";
+import { Box, Image } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/color-mode";
 export default function Hero({
     title,
     subtitle,
+    image,
     ...rest
 }) {
     const { colorMode, toggleColorMode } = useColorMode();
@@ -14,7 +16,7 @@ export default function Hero({
             justify={{ base: "center", md: "space-around", xl: "space-between" }}
             direction={{ base: "column-reverse", md: "row" }}
             wrap="no-wrap"
-            minH="70vh"
+            minH="90vh"
             px={8}
             mb={16}
             {...rest}
@@ -33,7 +35,7 @@ export default function Hero({
                 >
                     {title}
                 </Heading>
-                    <Heading
+                <Heading
                     as="h2"
                     size="md"
                     color="primary.800"
@@ -41,7 +43,7 @@ export default function Hero({
                     fontWeight="normal"
                     lineHeight={1.5}
                     textAlign={["center", "center", "left", "left"]}
-                    >
+                >
                     {subtitle}
                 </Heading>
             </Stack>
@@ -51,10 +53,12 @@ export default function Hero({
 
 Hero.propTypes = {
     title: PropTypes.string,
-    subtitle: PropTypes.string
+    subtitle: PropTypes.string,
+    image: PropTypes.string
 };
 
 Hero.defaultProps = {
     title: "Tom Mclean",
-    subtitle: "Simulation and performance engineer"
+    subtitle: "Simulation and performance engineer",
+    image: "https://i.ytimg.com/vi/juCjvZHlLes/maxresdefault.jpg"
 }

@@ -36,7 +36,7 @@ export function BackgroundBlob() {
 
   return (
     <Box
-      position="fixed"
+      position="absolute"
       width="100vw"
       height="100vh"
       top="0px"
