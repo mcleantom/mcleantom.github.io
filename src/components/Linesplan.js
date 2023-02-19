@@ -27,8 +27,9 @@ function Icon() {
     <Box
       position="absolute"
       top="-200px"
-      left="-200px"
-      height="100vh"
+      left="50%"
+      width="120ch"
+      transform="translate(-352px, 0px)"
       animation={animation}
     >
       <svg
@@ -37,7 +38,7 @@ function Icon() {
         strokeLinecap="round"
         strokeLinejoin="round"
         viewBox="0 0 1024 768"
-        height="100%"
+        height="100vh"
         style={styles}
       >
         <defs>
