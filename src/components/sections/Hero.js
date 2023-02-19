@@ -16,7 +16,7 @@ export default function Hero({
             justify={{ base: "center", md: "space-around", xl: "space-between" }}
             direction={{ base: "column-reverse", md: "row" }}
             wrap="no-wrap"
-            minH="90vh"
+            minH="70vh"
             px={8}
             mb={16}
             {...rest}

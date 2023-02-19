@@ -1,6 +1,6 @@
 import { BackgroundBlob } from "../components/BackgroundBlob";
-import { Box, Heading, Text, Stack, Container, useTheme } from "@chakra-ui/react";
-import { useRef, useEffect } from "react";
+import { Box, Heading, Text, Stack, Container, useTheme, transition } from "@chakra-ui/react";
+import { useRef, useEffect, useState } from "react";
 import Hero from "../components/sections/Hero";
 
 function Feature({
@@ -8,6 +8,7 @@ function Feature({
 }) {
 
   const box_ref = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
   const moveGlow = event => {
     if (box_ref.current && box_ref.current.style) {
@@ -50,8 +51,12 @@ function Feature({
         position: "absolute",
         top: "0px",
         left: "0px",
-        zIndex: 2
+        zIndex: 2,
+        opacity: isHovering ? 1 : 0,
+        transition: "opacity 500ms",
       }}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
     >
       <Heading fontSize='xl'>{title}</Heading>
       <Text mt={4}>{desc}</Text>
