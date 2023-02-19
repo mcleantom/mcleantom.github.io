@@ -1,10 +1,11 @@
 import { BackgroundBlob } from "../components/BackgroundBlob";
-import { Box, Heading, Text, Stack, Container, useTheme, transition } from "@chakra-ui/react";
+import { Box, Heading, Text, Stack, Container, useTheme, transition, SimpleGrid, Card, CardHeader, CardBody, CardFooter, Button } from "@chakra-ui/react";
 import { useRef, useEffect, useState } from "react";
 import Hero from "../components/sections/Hero";
+import Background from "../components/sections/Background";
 
 function Feature({
-  title, desc, ...rest
+  title, desc, skills, ...rest
 }) {
 
   const box_ref = useRef<HTMLDivElement>(null);
@@ -29,7 +30,7 @@ function Feature({
   }, []);
 
   return (
-    <Box 
+    <Card
       ref={box_ref}
       p={5}
       shadow='md'
@@ -58,9 +59,20 @@ function Feature({
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      <Heading fontSize='xl'>{title}</Heading>
-      <Text mt={4}>{desc}</Text>
-    </Box>
+      <CardHeader>
+        <Heading fontSize='2xs' textColor="green.200">{skills}</Heading>
+      </CardHeader>
+      <CardBody>
+        <Heading fontSize='xl'>{title}</Heading>
+        <Text mt={4}>{desc}</Text>
+      </CardBody>
+      <CardFooter>
+        <Button>
+          Find out more...
+        </Button>
+      </CardFooter>
+
+    </Card>
   )
 }
 
@@ -68,26 +80,31 @@ export function Home() {
   const theme = useTheme();
 
   return (
-    <Box>
-      <BackgroundBlob/>
-      <Container maxW='4xl' centerContent>
+    <Box
+      overflow="none"
+    >
+      <Background/>
+      <Container maxW='container.lg' centerContent>
         <Stack spacing={8} direction="column">
           <Hero
             title="Tom McLean"
             subtitle="Simulation and performance engineer"
             image="https://i.ytimg.com/vi/juCjvZHlLes/maxresdefault.jpg"
           ></Hero>
-          <Feature
-            title='Python'
-            desc='Im pretty good at Python'
-          />
-          <Feature
-            title='Save Money'
-            desc='You deserve good things. With a whooping 10-15% interest rate per annum, grow your savings on your own terms with our completely automated process'
-          />
+          <SimpleGrid columns={[2, null, null]} spacing={8}>
+            <Feature
+              title='ShipSEAT'
+              desc='Ship sytem efficiency analysis toolset'
+              skills="C++ Python"
+            />
+            <Feature
+              title='PBLM'
+              desc='Physics based learning methods'
+              skills="Machine Learning"
+            />
+          </SimpleGrid>
         </Stack>
       </Container>
-
     </Box>
   )
 }

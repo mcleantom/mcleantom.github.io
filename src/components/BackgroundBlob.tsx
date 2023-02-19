@@ -8,7 +8,7 @@ const follow_mouse = keyframes`
 
 const spin = keyframes`
   from {transform: rotate(0deg) translate(-50% -50%)}
-  50% {scale: 1 1.5}
+  50% {scale: 1 2}
   to {transform: rotate(360deg) translate(-50% -50%)}
 `;
 
@@ -21,7 +21,7 @@ export function BackgroundBlob() {
       box_ref.current.animate({
         left:`${event.clientX}px`,
         top:`${event.clientY}px`
-      }, { duration: 3000, fill: "forwards"});
+      }, { duration: 50000, fill: "forwards"});
     }
   };
 
@@ -54,7 +54,7 @@ export function BackgroundBlob() {
         aspect-ratio="1"
         zIndex={-1}
         filter="auto"
-        blur="50px"
+        blur="100px"
         animation={spinAnimation}
       ></Box>
     </Box>
