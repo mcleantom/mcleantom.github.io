@@ -1,15 +1,17 @@
 import { BackgroundBlob } from "../components/BackgroundBlob";
-import { Box, Heading, Text, Stack, Container, useTheme, transition, SimpleGrid, Card, CardHeader, CardBody, CardFooter, Button } from "@chakra-ui/react";
+import { Fade, Box, Heading, Text, Stack, Container, useTheme, transition, SimpleGrid, Card, CardHeader, CardBody, CardFooter, Button } from "@chakra-ui/react";
 import { useRef, useEffect, useState } from "react";
 import Hero from "../components/sections/Hero";
 import Background from "../components/sections/Background";
-
+import useOnScreen from "../hooks/useOneScreen";
+import NavBar from "../components/sections/NavBar";
 function Feature({
   title, desc, skills, ...rest
 }) {
 
   const box_ref = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
+  const isOnScreen = useOnScreen(box_ref, "-200px");
 
   const moveGlow = event => {
     if (box_ref.current && box_ref.current.style) {
@@ -30,49 +32,52 @@ function Feature({
   }, []);
 
   return (
-    <Card
-      ref={box_ref}
-      p={5}
-      shadow='md'
-      backgroundColor="blackAlpha.50"
-      borderRadius="10px"
-      border="1px"
-      borderColor="white"
-      position="relative"
-      _before={{
-        sx:{
-          bg: "white"
-        },
-        background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.5), transparent 40%)`,
-        // bgGradient: "radial(whiteAlpha.500, whiteAlpha.50)",
-        borderRadius: "inherit",
-        content: `""`,
-        height: "100%",
-        width: "100%",
-        position: "absolute",
-        top: "0px",
-        left: "0px",
-        zIndex: 2,
-        opacity: isHovering ? 1 : 0,
-        transition: "opacity 500ms",
-      }}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      <CardHeader>
-        <Heading fontSize='2xs' textColor="green.200">{skills}</Heading>
-      </CardHeader>
-      <CardBody>
-        <Heading fontSize='xl'>{title}</Heading>
-        <Text mt={4}>{desc}</Text>
-      </CardBody>
-      <CardFooter>
-        <Button>
-          Find out more...
-        </Button>
-      </CardFooter>
+    <Fade in={isOnScreen}>
+      <Card
+        ref={box_ref}
+        p={4}
+        shadow='md'
+        backgroundColor="blackAlpha.50"
+        borderRadius="10px"
+        border="1px"
+        borderColor="white"
+        position="relative"
+        _before={{
+          sx:{
+            bg: "white"
+          },
+          background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.2), transparent 40%)`,
+          // bgGradient: "radial(whiteAlpha.500, whiteAlpha.50)",
+          borderRadius: "inherit",
+          content: `""`,
+          height: "100%",
+          width: "100%",
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          zIndex: 2,
+          opacity: isHovering ? 1 : 0,
+          transition: "opacity 500ms",
+          pointerEvents:"none"
+        }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        <CardHeader>
+          <Heading fontSize='2xs' textColor="green.200">{skills}</Heading>
+        </CardHeader>
+        <CardBody>
+          <Heading fontSize='xl'>{title}</Heading>
+          <Text mt={4}>{desc}</Text>
+        </CardBody>
+        <CardFooter>
+          <Button onClick={() => console.log("button clicked")}>
+            Find out more...
+          </Button>
+        </CardFooter>
 
-    </Card>
+      </Card>
+    </Fade>
   )
 }
 
@@ -82,7 +87,9 @@ export function Home() {
   return (
     <Box
       overflow="none"
+      position="relative"
     >
+      <NavBar/>
       <Background/>
       <Container maxW='container.lg' centerContent>
         <Stack spacing={8} direction="column">
@@ -91,7 +98,7 @@ export function Home() {
             subtitle="Simulation and performance engineer"
             image="https://i.ytimg.com/vi/juCjvZHlLes/maxresdefault.jpg"
           ></Hero>
-          <SimpleGrid columns={[2, null, null]} spacing={8}>
+          <SimpleGrid columns={[2]} spacing={8}>
             <Feature
               title='ShipSEAT'
               desc='Ship sytem efficiency analysis toolset'

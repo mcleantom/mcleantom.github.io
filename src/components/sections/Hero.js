@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Flex, Stack, Heading } from "@chakra-ui/layout";
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Image, Button } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/color-mode";
 export default function Hero({
     title,
