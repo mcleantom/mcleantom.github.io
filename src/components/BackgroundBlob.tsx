@@ -21,7 +21,7 @@ export function BackgroundBlob() {
       box_ref.current.animate({
         left:`${event.clientX}px`,
         top:`${event.clientY}px`
-      }, { duration: 50000, fill: "forwards"});
+      }, { duration: 5000, fill: "forwards"});
     }
   };
 
