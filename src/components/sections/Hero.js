@@ -13,36 +13,36 @@ export default function Hero({
     return (
         <Flex
             align="center"
-            justify={{ base: "center", md: "space-around", xl: "space-between" }}
-            direction={{ base: "column-reverse", md: "row" }}
+            justify={{ base: "left" }}
+            direction={{  md: "row" }}
             wrap="no-wrap"
             minH="50vh"
             px={8}
             mb={16}
+            color="blue"
             {...rest}
         >
             <Stack
                 spacing={4}
-                w={{ base: "80%", md: "40%" }}
-                align={["center", "center", "flex-start", "flex-start"]}
+                w={{ base: "50%", md: "30%" }}
+                align={["flex-start"]}
             >
                 <Heading
                     as="h1"
                     size="xl"
-                    fontWeight="bold"
-                    color="secondry.800"
-                    textAlign={["center", "center", "left", "left"]}
+                    fontWeight="normal"
+                    textAlign={["left"]}
+                    fontSize={["2.5rem"]}
                 >
                     {title}
                 </Heading>
                 <Heading
                     as="h2"
                     size="md"
-                    color="primary.800"
                     opacity="0.8"
-                    fontWeight="normal"
+                    fontWeight="light"
                     lineHeight={1.5}
-                    textAlign={["center", "center", "left", "left"]}
+                    textAlign={["left"]}
                 >
                     {subtitle}
                 </Heading>

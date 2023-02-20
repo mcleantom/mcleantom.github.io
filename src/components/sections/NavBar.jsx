@@ -3,7 +3,6 @@ import {
     Box,
     Flex,
     Text,
-    Button,
     Stack,
     Container,
     HStack
@@ -11,11 +10,11 @@ import {
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faStackOverflow, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+
 
 const MenuIcon = () => (
     <svg
-    width="24px"
+    width="12px"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
     fill="white"
@@ -26,7 +25,7 @@ const MenuIcon = () => (
 );
 
 const CloseIcon = () => (
-<svg width="24" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+<svg width="12" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
     <title>Close</title>
     <path
     fill="white"
@@ -48,7 +47,7 @@ const MenuItem = ({ children, icon, text, isLast=false, to = "/",  isExternal=fa
         <Link href={to} isExternal={isExternal}>
             <HStack>
                 <FontAwesomeIcon icon={icon}/>
-                <Text>{text}</Text>
+                <Text fontSize="xs">{text}</Text>
             </HStack>
         </Link>
     );
@@ -57,7 +56,7 @@ const MenuItem = ({ children, icon, text, isLast=false, to = "/",  isExternal=fa
 
 const MenuLinks = ({ isOpen }) => {
     return (
-        <Container maxW='container.lg'
+        <Container
                 display={{ base: isOpen ? "block" : "none", md: "block" }}
                 flexBasis={{ base: "100%", md: "auto" }}>
             <Stack
@@ -67,7 +66,6 @@ const MenuLinks = ({ isOpen }) => {
                 direction={["column", "row", "row", "row"]}
                 pt={[4, 4, 0, 0]}
             >
-                <Text>View me at...</Text>
                 <MenuItem to="https://github.com/mcleantom" isExternal icon={faGithub} text="Github"/>
                 <MenuItem to="https://stackoverflow.com/users/14720380/tom-mclean" isExternal icon={faStackOverflow} text="Stackoverflow"/>
                 <MenuItem to="https://www.linkedin.com/in/tom-mclean-/" isExternal icon={faLinkedin} text="LinkedIn"/>
@@ -85,10 +83,11 @@ const NavBarContainer = ({ children, ...props }) => {
         justify="space-between"
         wrap="wrap"
         w="100%"
-        mb={8}
-        p={8}
-        bg={["primary.500", "primary.500", "transparent", "transparent"]}
-        color={["white", "white", "primary.700", "primary.700"]}
+        mb={4}
+        p={4}
+        // bg={["primary.500", "primary.500", "transparent", "transparent"]}
+        // color={["white", "white", "primary.700", "primary.700"]}
+        zIndex={100}
         {...props}
         >
         {children}

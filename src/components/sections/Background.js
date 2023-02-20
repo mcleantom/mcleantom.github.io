@@ -5,9 +5,9 @@ export default function Background() {
     return (
         <Box
             position="absolute"
+            height="100%"
             width="100vw"
-            height="100vh"
-            overflow="none"
+            overflow="hidden"
             top="0px"
             left="0px"
             pointerEvents="none"

@@ -100,7 +100,7 @@ function Projects() {
       <Heading>Projects</Heading>
       <SimpleGrid columns={[1, 2, 2]} spacing={8}>
         <Feature
-          title="ShipSEAT"
+          title="ShipdskjdSEAT"
           desc="Ship sytem efficiency analysis toolset"
           skills="C++ Python"
         />
