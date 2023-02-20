@@ -11,7 +11,7 @@ export default function HeaderHero({ children }) {
       overflow="hidden"
       position="relative"
       display="flex"
-      zIndex={-10}
+      // zIndex={-10}
     >
       <Container>
         <NavBar />
